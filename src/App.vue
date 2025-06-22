@@ -1,11 +1,17 @@
 <script setup lang="ts">
-// script files here...
+import LoginPage from "@/pages/LoginPage.vue";
 </script>
 
 <template>
-  <div>LENDSQR FRONTEND ENGINEERING TEST</div>
+  <div :class="$style.overallWrap">
+    <LoginPage />
+  </div>
 </template>
 
 <style module lang="scss">
-// styles here...
+@use "@/scss/colors";
+
+.overallWrap {
+  background-color: colors.use("bg-light");
+}
 </style>
