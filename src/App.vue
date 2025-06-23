@@ -1,10 +1,8 @@
-<script setup lang="ts">
-import LoginPage from "@/pages/LoginPage.vue";
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <div :class="$style.overallWrap">
-    <LoginPage />
+    <RouterView />
   </div>
 </template>
 
@@ -13,5 +11,6 @@ import LoginPage from "@/pages/LoginPage.vue";
 
 .overallWrap {
   background-color: colors.use("bg-light");
+  color: colors.use("text");
 }
 </style>
