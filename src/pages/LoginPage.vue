@@ -18,13 +18,16 @@ import CenterPage from "@/components/CenterPage.vue";
         <img :src="Logo" :class="$style.mobileLogo" alt="Logo" />
         <h1 :class="$style.title">Welcome!</h1>
         <p :class="$style.subtitle">Enter details to login.</p>
-        <form :class="$style.form">
+        <form
+          :class="$style.form"
+          @submit.prevent="$router.push({ path: '/users' })"
+        >
           <InputText placeholder="Email" type="email" required />
           <InputPassword placeholder="Password" required />
           <p :class="$style.footerText">
             <a href="#">Forgot Password?</a>
           </p>
-          <BaseButton value="Log in" type="submit">Login</BaseButton>
+          <BaseButton value="Log in" type="submit"> Login </BaseButton>
         </form>
       </div>
     </div>
@@ -71,7 +74,7 @@ import CenterPage from "@/components/CenterPage.vue";
 
 .formWrap {
   width: 50%;
-  background: colors.use(primary-bg);
+  background: colors.use(bg-primary);
   min-height: 100%;
   display: flex;
   flex-direction: column;
@@ -82,6 +85,7 @@ import CenterPage from "@/components/CenterPage.vue";
   .title {
     color: colors.use(text-dark);
     margin-bottom: $margin-sm-1;
+    font-weight: 700;
   }
   .subtitle {
     margin-bottom: $margin-xl;

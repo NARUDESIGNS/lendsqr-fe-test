@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import BaseButton from "@/components/base-button/BaseButton.vue";
+import { computed, ref } from "vue";
+
 defineProps<{
   /** Disabled */
   disabled?: boolean;
@@ -16,22 +19,30 @@ const modelValue = defineModel<string | number>({
 defineOptions({
   inheritAttrs: false,
 });
+
+const inputRef = ref<HTMLInputElement | null>(null);
+const btnHeight = computed(() => `${inputRef.value?.offsetHeight || 40}px`);
 </script>
 
 <template>
-  <div :class="[$style.container]">
+  <div :class="$style.container">
     <input
       v-model="modelValue"
       :class="[$style.input, { [$style.disabled]: disabled }, $attrs.class]"
       :disabled="disabled"
       :placeholder="placeholder"
       v-bind="$attrs"
+      ref="inputRef"
     />
+    <BaseButton v-if="showButton" :class="$style.btn">
+      <slot> done </slot>
+    </BaseButton>
   </div>
 </template>
 
 <style module lang="scss">
 @use "@/scss/colors";
+@import "@/scss/spaces";
 
 ::placeholder {
   color: colors.use(text);
@@ -54,7 +65,7 @@ defineOptions({
 
   &:focus {
     outline: none;
-    border: 1px solid colors.use(border);
+    border-width: 2px;
   }
 }
 
@@ -63,9 +74,16 @@ defineOptions({
   cursor: not-allowed;
 }
 
-// @media screen and (max-width: 400px) {
-//   .input {
-//     padding: 15px;
-//   }
-// }
+.btn {
+  height: v-bind(btnHeight);
+  width: 56px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  padding: $padding-md;
+
+  &:active,
+  &:focus {
+    outline: none;
+  }
+}
 </style>

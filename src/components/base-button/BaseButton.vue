@@ -54,15 +54,10 @@ const width = computed(() => (props.width ? `${props.width}px` : "250px"));
 <style module lang="scss">
 @use "@/scss/colors";
 
-@mixin focus-outline($state: "light-blue") {
-  box-shadow: 0 0 0 3px colors.use($state);
-  outline: none;
-}
-
 .btn {
   width: v-bind(width);
   padding: 0 10px;
-  height: 50px;
+  height: 48px;
   border: none;
   border-radius: 7px;
   cursor: pointer;
@@ -70,11 +65,8 @@ const width = computed(() => (props.width ? `${props.width}px` : "250px"));
   background-color: colors.use(primary);
   text-transform: uppercase;
 
+  &:hover,
   &:focus {
-    @include focus-outline();
-  }
-
-  &:hover {
     background-color: darken($color: colors.use(primary), $amount: 7);
     transition: 0.2s ease;
   }
@@ -83,10 +75,8 @@ const width = computed(() => (props.width ? `${props.width}px` : "250px"));
 .danger {
   background-color: colors.use(danger);
 
+  &:hover,
   &:focus {
-    @include focus-outline("light-red");
-  }
-  &:hover {
     background-color: darken($color: colors.use(danger), $amount: 7);
     transition: 0.2s ease;
   }
@@ -96,9 +86,7 @@ const width = computed(() => (props.width ? `${props.width}px` : "250px"));
   color: colors.use(primary);
   border: 1px solid colors.use(border);
 
-  &:focus {
-    @include focus-outline();
-  }
+  &:focus,
   &:hover {
     background-color: transparent;
     border-color: darken($color: colors.use(primary), $amount: 10);
