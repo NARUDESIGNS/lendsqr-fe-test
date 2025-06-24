@@ -42,7 +42,7 @@ const btnHeight = computed(() => `${inputRef.value?.offsetHeight || 40}px`);
 
 <style module lang="scss">
 @use "@/scss/colors";
-@import "@/scss/spaces";
+@use "@/scss/styles";
 
 ::placeholder {
   color: colors.use(text);
@@ -65,7 +65,7 @@ const btnHeight = computed(() => `${inputRef.value?.offsetHeight || 40}px`);
 
   &:focus {
     outline: none;
-    border-width: 2px;
+    border: 1px solid colors.use(primary);
   }
 }
 
@@ -79,7 +79,7 @@ const btnHeight = computed(() => `${inputRef.value?.offsetHeight || 40}px`);
   width: 56px;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
-  padding: $padding-md;
+  padding: styles.$padding-md;
 
   &:active,
   &:focus {

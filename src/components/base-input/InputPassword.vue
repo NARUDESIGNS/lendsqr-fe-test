@@ -27,7 +27,7 @@ const togglePasswordType = () =>
 
 <style module lang="scss">
 @use "@/scss/colors";
-@import "@/scss/spaces";
+@use "@/scss/styles";
 
 .container {
   width: 100%;
@@ -44,10 +44,10 @@ const togglePasswordType = () =>
   }
 
   .input {
-    padding-right: $padding-xl;
+    padding-right: styles.$padding-xl;
 
     @media screen and (max-width: 768px) {
-      padding-right: $padding-lg;
+      padding-right: styles.$padding-lg;
     }
   }
 }

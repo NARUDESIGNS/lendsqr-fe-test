@@ -34,15 +34,15 @@ const count = computed(() => formatNumber(props.count));
 
 <style module lang="scss">
 @use "@/scss/colors";
-@import "@/scss/spaces";
+@use "@/scss/styles";
 
 .userStatsCard {
   background-color: colors.use("bg-primary");
-  padding: $padding-lg;
+  padding: styles.$padding-lg;
   display: flex;
   flex-direction: column;
-  gap: $padding-sm-1;
-  box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.1);
+  gap: styles.$padding-sm-1;
+  box-shadow: styles.$box-shadow;
 }
 
 .icon {

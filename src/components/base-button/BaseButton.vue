@@ -64,34 +64,34 @@ const width = computed(() => (props.width ? `${props.width}px` : "250px"));
   color: white;
   background-color: colors.use(primary);
   text-transform: uppercase;
+  transition: 0.3s ease;
 
   &:hover,
   &:focus {
     background-color: darken($color: colors.use(primary), $amount: 7);
-    transition: 0.2s ease;
   }
 }
 
 .danger {
   background-color: colors.use(danger);
+  transition: 0.3s ease;
 
   &:hover,
   &:focus {
     background-color: darken($color: colors.use(danger), $amount: 7);
-    transition: 0.2s ease;
   }
 }
 .outline {
   background-color: transparent;
   color: colors.use(primary);
   border: 1px solid colors.use(border);
+  transition: 0.3s ease;
 
   &:focus,
   &:hover {
     background-color: transparent;
     border-color: darken($color: colors.use(primary), $amount: 10);
     color: darken($color: colors.use(primary), $amount: 10);
-    transition: 0.2s ease;
   }
 }
 
