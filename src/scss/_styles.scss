@@ -1,0 +1,39 @@
+// SPACES
+// paddings
+$padding-xl: 64px;
+$padding-lg-1: 48px;
+$padding-lg: 32px;
+$padding-md-1: 24px;
+$padding-md: 16px;
+$padding-sm-1: 12px;
+$padding-sm: 8px;
+$padding-xs: 4px;
+
+// margins
+$margin-xl: 64px;
+$margin-lg-1: 48px;
+$margin-lg: 32px;
+$margin-md-1: 24px;
+$margin-md: 16px;
+$margin-sm-1: 12px;
+$margin-sm: 8px;
+$margin-xs: 4px;
+
+// STYLES
+// box shadows
+$box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
+$box-shadow-md: 0 3px 20px rgba(0, 0, 0, 0.1);
+$box-shadow-lg: 0 5px 30px rgba(0, 0, 0, 0.1);
+
+// LAYOUTS
+// Center content with flexbox
+@mixin flex-center(
+  $flex-direction: "row",
+  $justify-content: "center",
+  $align-items: "center"
+) {
+  display: flex;
+  flex-direction: $flex-direction;
+  justify-content: $justify-content;
+  align-items: $align-items;
+}
