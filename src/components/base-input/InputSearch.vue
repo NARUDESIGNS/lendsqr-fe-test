@@ -18,7 +18,7 @@ const searchText = ref("");
 </template>
 
 <style module lang="scss">
-@use "@/scss/styles";
+@use "@/scss/styles" as *;
 
 .input {
   width: 100%;
@@ -27,6 +27,6 @@ const searchText = ref("");
   border-right: transparent;
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
-  padding: styles.$padding-sm styles.$padding-md;
+  padding: $padding-sm $padding-md;
 }
 </style>

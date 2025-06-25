@@ -23,8 +23,8 @@ const route = useRoute();
 const data = computed(() =>
   props.data.map((item) => {
     const title = item.title.toLocaleLowerCase().replaceAll(" ", "");
-    const routeName = route.name
-      ?.toString()
+    const routeName = route.path
+      .split("/")[1]
       .toLocaleLowerCase()
       .replaceAll("-", "");
     return {
@@ -56,20 +56,20 @@ const data = computed(() =>
 
 <style module lang="scss">
 @use "@/scss/colors";
-@use "@/scss/styles";
+@use "@/scss/styles" as *;
 
 .sidebarSection {
   display: flex;
   flex-direction: column;
-  gap: styles.$margin-sm-1;
+  gap: $margin-sm-1;
 
   .title {
-    padding-left: styles.$padding-lg;
+    padding-left: $padding-lg;
     text-transform: uppercase;
   }
 
   .sidebarItem:not(:last-child) {
-    margin-bottom: styles.$margin-sm-1;
+    margin-bottom: $margin-sm-1;
   }
 }
 </style>

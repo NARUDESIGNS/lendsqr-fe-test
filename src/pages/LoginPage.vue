@@ -36,7 +36,7 @@ import CenterPage from "@/components/CenterPage.vue";
 
 <style module lang="scss">
 @use "@/scss/colors";
-@use "@/scss/styles";
+@use "@/scss/styles" as *;
 
 .wrap {
   display: flex;
@@ -79,28 +79,28 @@ import CenterPage from "@/components/CenterPage.vue";
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: calc(styles.$padding-xl + styles.$padding-lg);
+  padding: calc($padding-xl + $padding-lg);
   color: colors.use(text);
 
   .title {
     color: colors.use(text-dark);
-    margin-bottom: styles.$margin-sm-1;
+    margin-bottom: $margin-sm-1;
     font-weight: 700;
   }
   .subtitle {
-    margin-bottom: styles.$margin-xl;
+    margin-bottom: $margin-xl;
   }
 }
 
 .form {
   display: flex;
   flex-direction: column;
-  gap: styles.$padding-md-1;
+  gap: $padding-md-1;
 }
 
 @media screen and (max-width: 1024px) {
   .formWrap {
-    padding: styles.$padding-lg-1;
+    padding: $padding-lg-1;
   }
 }
 
@@ -110,12 +110,12 @@ import CenterPage from "@/components/CenterPage.vue";
   }
   .formWrap {
     width: 100%;
-    padding: styles.$padding-md-1;
+    padding: $padding-md-1;
 
     .mobileLogo {
       display: block;
       height: 36px;
-      margin-bottom: styles.$margin-lg-1;
+      margin-bottom: $margin-lg-1;
     }
   }
 }

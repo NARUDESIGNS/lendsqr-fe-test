@@ -53,10 +53,11 @@ const width = computed(() => (props.width ? `${props.width}px` : "250px"));
 
 <style module lang="scss">
 @use "@/scss/colors";
+@use "@/scss/styles" as *;
 
 .btn {
   width: v-bind(width);
-  padding: 0 10px;
+  padding: 0 $padding-sm-1;
   height: 48px;
   border: none;
   border-radius: 7px;
@@ -73,18 +74,22 @@ const width = computed(() => (props.width ? `${props.width}px` : "250px"));
 }
 
 .danger {
-  background-color: colors.use(danger);
+  background: none;
   transition: 0.3s ease;
+  border: 1px solid colors.use(danger);
+  color: colors.use(danger);
 
   &:hover,
   &:focus {
-    background-color: darken($color: colors.use(danger), $amount: 7);
+    background-color: transparent;
+    border-color: darken($color: colors.use(danger), $amount: 10);
+    color: darken($color: colors.use(danger), $amount: 10);
   }
 }
 .outline {
-  background-color: transparent;
+  background: none;
+  border: 1px solid colors.use(primary);
   color: colors.use(primary);
-  border: 1px solid colors.use(border);
   transition: 0.3s ease;
 
   &:focus,

@@ -161,7 +161,7 @@ const menuData = [
 
 <style module lang="scss">
 @use "@/scss/colors";
-@use "@/scss/styles";
+@use "@/scss/styles" as *;
 
 .sidebarMenu {
   display: flex;
@@ -169,10 +169,10 @@ const menuData = [
   background-color: colors.use(bg-primary);
   width: 280px;
   overflow-y: auto;
-  box-shadow: styles.$box-shadow;
-  gap: styles.$margin-lg-1;
-  padding-top: styles.$padding-lg;
-  padding-bottom: styles.$padding-md;
+  box-shadow: $box-shadow;
+  gap: $margin-lg-1;
+  padding-top: $padding-lg;
+  padding-bottom: $padding-md;
   height: calc(100dvh - 112px);
   position: sticky;
   top: 112px;
@@ -194,11 +194,11 @@ const menuData = [
 .footer {
   display: flex;
   flex-direction: column;
-  gap: styles.$margin-lg;
+  gap: $margin-lg;
   border-top: 1px solid lighten(colors.use("border"), 60%);
   .footerText {
     color: colors.use(text-dark);
-    padding-left: styles.$padding-lg;
+    padding-left: $padding-lg;
   }
 }
 </style>

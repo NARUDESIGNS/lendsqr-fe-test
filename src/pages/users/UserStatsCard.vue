@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { formatNumber } from "@/utils/formatNumber";
 import { computed } from "vue";
 
 const props = defineProps<{
@@ -9,15 +10,6 @@ const props = defineProps<{
   /** Count */
   count: number;
 }>();
-
-function formatNumber(num: number) {
-  return num > 1000000
-    ? new Intl.NumberFormat("en", {
-        notation: "compact",
-        maximumFractionDigits: 1,
-      }).format(num)
-    : num.toLocaleString();
-}
 
 const count = computed(() => formatNumber(props.count));
 </script>
@@ -34,15 +26,15 @@ const count = computed(() => formatNumber(props.count));
 
 <style module lang="scss">
 @use "@/scss/colors";
-@use "@/scss/styles";
+@use "@/scss/styles" as *;
 
 .userStatsCard {
   background-color: colors.use("bg-primary");
-  padding: styles.$padding-lg;
+  padding: $padding-lg;
   display: flex;
   flex-direction: column;
-  gap: styles.$padding-sm-1;
-  box-shadow: styles.$box-shadow;
+  gap: $padding-sm-1;
+  box-shadow: $box-shadow;
   border-radius: 4px;
 }
 

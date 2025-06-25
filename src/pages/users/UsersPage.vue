@@ -7,7 +7,8 @@ import NavBar from "@/components/NavBar.vue";
 import SidebarMenu from "@/components/sidebar/SidebarMenu.vue";
 import TableData from "@/components/table/TableData.vue";
 import UserStatsCard from "@/pages/users/UserStatsCard.vue";
-import { useCssModule } from "vue";
+import { computed, useCssModule } from "vue";
+import { useRoute } from "vue-router";
 
 const $style = useCssModule();
 const data = [
@@ -31,6 +32,11 @@ const data = [
     style: $style.orange,
   },
 ];
+
+const route = useRoute();
+const isDetailsPage = computed(
+  () => !!route.params.id && Number(route.params.id)
+);
 </script>
 
 <template>
@@ -38,7 +44,10 @@ const data = [
     <NavBar />
     <div :class="$style.contentWrap">
       <SidebarMenu :class="$style.sidebarMenu" />
-      <div :class="$style.mainContent">
+      <template v-if="isDetailsPage">
+        <RouterView />
+      </template>
+      <div v-else :class="$style.mainContent">
         <h1 :class="$style.title">Users</h1>
         <div :class="$style.statsWrap">
           <UserStatsCard
@@ -62,7 +71,7 @@ const data = [
 
 <style module lang="scss">
 @use "@/scss/colors";
-@use "@/scss/styles";
+@use "@/scss/styles" as *;
 
 .contentWrap {
   display: flex;
@@ -75,12 +84,12 @@ const data = [
 .mainContent {
   display: flex;
   flex-direction: column;
-  gap: styles.$padding-lg;
+  gap: $padding-lg;
   min-height: 100dvh;
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: styles.$padding-xl;
+  padding: $padding-xl;
 }
 
 .title {
@@ -92,14 +101,14 @@ const data = [
 .statsWrap {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: styles.$padding-md-1;
+  gap: $padding-md-1;
 }
 
 .icon {
   height: 40px;
   width: 40px;
   border-radius: 50%;
-  padding: styles.$padding-sm;
+  padding: $padding-sm;
   display: flex;
   align-items: center;
   justify-content: center;

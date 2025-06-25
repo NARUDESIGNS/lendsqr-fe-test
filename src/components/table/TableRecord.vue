@@ -19,7 +19,7 @@ defineProps<{
 }>();
 
 defineEmits<{
-  showMore: [];
+  showMore: [event: MouseEvent];
 }>();
 </script>
 
@@ -31,7 +31,7 @@ defineEmits<{
     <p :class="$style.data" :title="phone">{{ phone }}</p>
     <p :class="$style.data" :title="date">{{ date }}</p>
     <BaseTag :status="status" />
-    <span :class="$style.moreIcon" @click="$emit('showMore')">
+    <span :class="$style.moreIcon" @click="$emit('showMore', $event)">
       <MoreVerticalIcon />
     </span>
   </div>
@@ -39,14 +39,14 @@ defineEmits<{
 
 <style module lang="scss">
 @use "@/scss/colors";
-@use "@/scss/styles";
+@use "@/scss/styles" as *;
 
 .tableRecord {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 0.2fr;
   align-items: center;
-  padding: styles.$padding-md;
-  gap: styles.$padding-md;
+  padding: $padding-md 0;
+  gap: $padding-md-1;
   color: colors.use(text);
   font-weight: 400;
   font-size: 0.875rem;
@@ -60,7 +60,7 @@ defineEmits<{
   }
 
   .moreIcon {
-    padding: 0 styles.$padding-sm;
+    padding: 0 $padding-sm;
     cursor: pointer;
   }
 }

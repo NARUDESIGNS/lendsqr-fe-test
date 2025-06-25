@@ -48,7 +48,7 @@ const toggleMenu = () => {
 
 <style module lang="scss">
 @use "@/scss/colors";
-@use "@/scss/styles";
+@use "@/scss/styles" as *;
 
 .navBar {
   position: sticky;
@@ -57,10 +57,10 @@ const toggleMenu = () => {
 
   display: flex;
   align-items: center;
-  gap: styles.$padding-xl;
+  gap: $padding-xl;
   background-color: colors.use("bg-primary");
-  padding: styles.$padding-lg;
-  box-shadow: styles.$box-shadow;
+  padding: $padding-lg;
+  box-shadow: $box-shadow;
 
   .navBarLogo {
     height: 40px;
@@ -70,7 +70,7 @@ const toggleMenu = () => {
 }
 
 .menuIconWrap {
-  padding: styles.$padding-sm;
+  padding: $padding-sm;
   display: flex;
   display: none;
 
@@ -83,14 +83,14 @@ const toggleMenu = () => {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: styles.$padding-md;
+  gap: $padding-md;
   width: 100%;
 }
 
 .navBarItems {
   display: flex;
   align-items: center;
-  gap: styles.$padding-lg;
+  gap: $padding-lg;
 
   .docs {
     color: default;
@@ -107,7 +107,7 @@ const toggleMenu = () => {
   .user {
     display: flex;
     align-items: center;
-    gap: styles.$padding-sm;
+    gap: $padding-sm;
     cursor: pointer;
 
     .userImg {
@@ -126,7 +126,7 @@ const toggleMenu = () => {
 
       .caretDown {
         font-size: 12px;
-        margin-left: styles.$padding-xs;
+        margin-left: $padding-xs;
       }
     }
   }
@@ -146,10 +146,10 @@ const toggleMenu = () => {
     width: 100%;
     position: absolute;
     top: 100px;
-    right: styles.$margin-lg;
+    right: $margin-lg;
     background-color: colors.use("bg-light");
-    box-shadow: styles.$box-shadow-lg;
-    padding: styles.$padding-md;
+    box-shadow: $box-shadow-lg;
+    padding: $padding-md;
     display: none;
   }
 

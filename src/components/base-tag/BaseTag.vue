@@ -35,19 +35,19 @@ const statusColors = {
 }
 
 .active {
-  background: lighten(colors.use(success), 50%);
+  background: rgba(colors.use(success), 0.1);
   color: colors.use(success);
 }
 .inactive {
-  background: lighten(colors.use(inactive), 50%);
+  background: rgba(colors.use(inactive), 0.1);
   color: colors.use(inactive);
 }
 .pending {
-  background: lighten(colors.use(warning), 50%);
+  background: rgba(colors.use(warning), 0.1);
   color: colors.use(warning);
 }
 .blacklisted {
-  background: lighten(colors.use(danger), 50%);
+  background: rgba(colors.use(danger), 0.1);
   color: colors.use(danger);
 }
 </style>

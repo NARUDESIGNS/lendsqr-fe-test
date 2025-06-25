@@ -22,13 +22,13 @@ defineProps<{
 
 <style module lang="scss">
 @use "@/scss/colors";
-@use "@/scss/styles";
+@use "@/scss/styles" as *;
 
 .sidebarItemWrap {
   display: flex;
   align-items: center;
-  gap: styles.$padding-sm-1;
-  padding: styles.$padding-sm-1 styles.$padding-lg;
+  gap: $padding-sm-1;
+  padding: $padding-sm-1 $padding-lg;
   cursor: pointer;
   transition: 0.3s ease;
   font-weight: 400;
