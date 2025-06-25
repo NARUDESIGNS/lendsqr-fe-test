@@ -4,15 +4,15 @@
 /// @type Map
 $colors: (
   "primary": #39cdcc,
-  "danger": #ff404b,
-  "warning": #ffbc40,
-  "border": #1967ff,
+  "success": #39cd62,
+  "warning": #e9b200,
+  "danger": #e4033b,
+  "border": #213f7d,
   "border-light": #545f7d26,
   "border-dark": #888888,
   "light-blue": #aac7ff,
   "light-red": #ffa9a9,
-  "light-gray": #dee2e6,
-  "gray": #adb5bd,
+  "inactive": #41464f,
   "dark-gray": #495057,
   "text": #545f7d,
   "text-light": #ffffff,
@@ -23,6 +23,11 @@ $colors: (
   "bg-light": #fbfbfb,
   "bg-primary": #ffffff,
   "teal": #39cdcc,
+  // direct colors
+  "pink": #df18ff,
+  "purple": #5718ff,
+  "orange": #f55f44,
+  "red": #ff3366,
 );
 
 /// function to return colors
