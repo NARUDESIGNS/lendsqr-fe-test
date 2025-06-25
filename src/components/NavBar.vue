@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import BellIcon from "@/assets/icons/bell-icon.svg";
-import CaretDown from "@/assets/icons/caret-down.svg";
-import Logo from "@/assets/icons/logo.svg";
-import MenuIcon from "@/assets/icons/menu-icon.svg";
 import UserImage from "@/assets/images/userImg.png";
+import BellIcon from "@/assets/vue-icons/BellIcon.vue";
+import CaretDownIcon from "@/assets/vue-icons/CaretDownIcon.vue";
+import LogoIcon from "@/assets/vue-icons/LogoIcon.vue";
+import MenuIcon from "@/assets/vue-icons/MenuIcon.vue";
 import InputSearch from "@/components/base-input/InputSearch.vue";
 import { ref } from "vue";
 
@@ -19,30 +19,25 @@ const toggleMenu = () => {
 
 <template>
   <div :class="$style.navBar">
-    <img
+    <Component
       :class="$style.navBarLogo"
-      :src="Logo"
-      alt="Logo"
+      :is="LogoIcon"
       @click="$router.push({ path: '/' })"
     />
     <span :class="$style.menuIconWrap" @click="toggleMenu">
-      <img :class="$style.menuIcon" :src="MenuIcon" alt="Menu Icon" />
+      <Component :class="$style.menuIcon" :is="MenuIcon" alt="Menu Icon" />
     </span>
     <div :class="$style.navBarContent" ref="navBarContent">
       <InputSearch :class="$style.navBarSearch" />
       <div :class="$style.navBarItems">
         <a :class="$style.docs" href="#docs">Docs</a>
-        <img :class="$style.bellIcon" :src="BellIcon" alt="Bell Icon" />
+        <Component :class="$style.bellIcon" :is="BellIcon" />
         <div :class="$style.user">
           <img :class="$style.userImg" :src="UserImage" alt="User Image" />
           <div :class="$style.userName">
             Ayodeji
             <span :class="$style.caretDown">
-              <img
-                :class="$style.caretDown"
-                :src="CaretDown"
-                alt="Caret Down Icon"
-              />
+              <Component :class="$style.caretDown" :is="CaretDownIcon" />
             </span>
           </div>
         </div>
@@ -78,6 +73,10 @@ const toggleMenu = () => {
   padding: styles.$padding-sm;
   display: flex;
   display: none;
+
+  .menuIcon {
+    cursor: pointer;
+  }
 }
 
 .navBarContent {

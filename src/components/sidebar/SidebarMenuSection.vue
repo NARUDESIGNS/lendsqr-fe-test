@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import SidebarMenuItem from "@/components/sidebar/SidebarMenuItem.vue";
-import { computed } from "vue";
+import { type Component, computed } from "vue";
 import { useRoute } from "vue-router";
 
 const props = defineProps<{
@@ -14,36 +14,42 @@ interface SectionData {
   /** Title */
   title: string;
   /** Icon */
-  icon: string;
+  icon: Component;
   /** Active item */
   isActive?: boolean;
 }
 
 const route = useRoute();
 const data = computed(() =>
-  props.data.map((item) => ({
-    ...item,
-    isActive:
-      item.title.toLocaleLowerCase() ===
-      route.name?.toString().toLocaleLowerCase(),
-  }))
+  props.data.map((item) => {
+    const title = item.title.toLocaleLowerCase().replaceAll(" ", "");
+    const routeName = route.name
+      ?.toString()
+      .toLocaleLowerCase()
+      .replaceAll("-", "");
+    return {
+      ...item,
+      isActive: title === routeName,
+    };
+  })
 );
 </script>
 
 <template>
   <div :class="$style.sidebarSection">
-    <p :class="$style.header">{{ title }}</p>
+    <p :class="$style.title">{{ title }}</p>
     <div :class="$style.content">
-      <slot>
-        <SidebarMenuItem
-          v-for="(item, index) in data"
-          :class="$style.sidebarItem"
-          :key="index"
-          :icon="item.icon"
-          :title="item.title"
-          :isActive="item.isActive"
-        />
-      </slot>
+      <SidebarMenuItem
+        v-for="(item, index) in data"
+        :class="$style.sidebarItem"
+        :key="index"
+        :title="item.title"
+        :isActive="item.isActive"
+      >
+        <template #icon>
+          <Component :is="item.icon" />
+        </template>
+      </SidebarMenuItem>
     </div>
   </div>
 </template>
@@ -55,9 +61,14 @@ const data = computed(() =>
 .sidebarSection {
   display: flex;
   flex-direction: column;
-  gap: styles.$padding-sm-1;
+  gap: styles.$margin-sm-1;
 
-  .sidebarItem {
+  .title {
+    padding-left: styles.$padding-lg;
+    text-transform: uppercase;
+  }
+
+  .sidebarItem:not(:last-child) {
     margin-bottom: styles.$margin-sm-1;
   }
 }

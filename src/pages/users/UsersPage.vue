@@ -1,19 +1,36 @@
 <script setup lang="ts">
-import ActiveUsersIcon from "@/assets/icons/active-users-icon.svg";
-import LoansIcon from "@/assets/icons/loans-icon.svg";
-import SavingsIcon from "@/assets/icons/savings-icon.svg";
-import UsersIcon from "@/assets/icons/users-icon.svg";
+import ActiveUsersIcon from "@/assets/vue-icons/ActiveUsersIcon.vue";
+import LoansIcon from "@/assets/vue-icons/LoansIcon.vue";
+import SavingsIcon from "@/assets/vue-icons/SavingsIcon.vue";
+import Users2Icon from "@/assets/vue-icons/Users2Icon.vue";
 import NavBar from "@/components/NavBar.vue";
 import SidebarMenu from "@/components/sidebar/SidebarMenu.vue";
+import TableData from "@/components/table/TableData.vue";
 import UserStatsCard from "@/pages/users/UserStatsCard.vue";
-import { ref } from "vue";
+import { useCssModule } from "vue";
 
-const data = ref([
-  { title: "Users", icon: UsersIcon, count: 2453 },
-  { title: "Active Users", icon: ActiveUsersIcon, count: 2453 },
-  { title: "Users With Loans", icon: LoansIcon, count: 12453 },
-  { title: "Users With Savings", icon: SavingsIcon, count: 102453 },
-]);
+const $style = useCssModule();
+const data = [
+  { title: "Users", icon: Users2Icon, count: 2453, style: $style.pink },
+  {
+    title: "Active Users",
+    icon: ActiveUsersIcon,
+    count: 2453,
+    style: $style.purple,
+  },
+  {
+    title: "Users With Loans",
+    icon: LoansIcon,
+    count: 12453,
+    style: $style.red,
+  },
+  {
+    title: "Users With Savings",
+    icon: SavingsIcon,
+    count: 102453,
+    style: $style.orange,
+  },
+];
 </script>
 
 <template>
@@ -28,10 +45,16 @@ const data = ref([
             v-for="(item, index) in data"
             :key="index"
             :title="item.title"
-            :icon="item.icon"
             :count="item.count"
-          />
+          >
+            <template #icon>
+              <div :class="[$style.icon, item.style]">
+                <Component :is="item.icon" />
+              </div>
+            </template>
+          </UserStatsCard>
         </div>
+        <TableData />
       </div>
     </div>
   </div>
@@ -50,8 +73,10 @@ const data = ref([
 }
 
 .mainContent {
+  display: flex;
+  flex-direction: column;
+  gap: styles.$padding-lg;
   min-height: 100dvh;
-  // border: 1px solid #525252;
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
@@ -61,13 +86,39 @@ const data = ref([
 .title {
   font-weight: 500;
   font-size: 1.5rem;
-  color: colors.use("text-dark");
-  margin-bottom: styles.$padding-lg;
+  color: colors.use(text-dark);
 }
 
 .statsWrap {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   gap: styles.$padding-md-1;
+}
+
+.icon {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  padding: styles.$padding-sm;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  svg {
+    height: 24px;
+    width: 24px;
+  }
+}
+.pink {
+  background-color: rgba(colors.use("pink"), 0.1);
+}
+.purple {
+  background-color: rgba(colors.use("purple"), 0.1);
+}
+.orange {
+  background-color: rgba(colors.use("orange"), 0.1);
+}
+.red {
+  background-color: rgba(colors.use("red"), 0.1);
 }
 </style>

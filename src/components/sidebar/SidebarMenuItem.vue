@@ -1,7 +1,7 @@
 <script setup lang="ts">
 defineProps<{
   /** Icon */
-  icon: string;
+  icon?: string;
   /** Title */
   title: string;
   /** Active Item */
@@ -12,7 +12,7 @@ defineProps<{
 <template>
   <div :class="[$style.sidebarItemWrap, { [$style.active]: isActive }]">
     <span :class="$style.icon">
-      <slot>
+      <slot name="icon">
         <img :src="icon" alt="icon" />
       </slot>
     </span>
@@ -33,7 +33,7 @@ defineProps<{
   transition: 0.3s ease;
   font-weight: 400;
   color: colors.use(text);
-  opacity: 0.8;
+  opacity: 0.6;
 
   &:hover {
     color: colors.use(text-dark);
@@ -47,4 +47,12 @@ defineProps<{
   color: colors.use(text-dark);
   border-left: 3px solid colors.use(primary);
 }
+
+.icon {
+  display: flex;
+}
+
+// .title {
+//   display: none;
+// }
 </style>

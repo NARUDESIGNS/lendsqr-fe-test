@@ -5,7 +5,7 @@ const props = defineProps<{
   /** Title */
   title: string;
   /** Icon */
-  icon: string;
+  icon?: string;
   /** Count */
   count: number;
 }>();
@@ -25,7 +25,7 @@ const count = computed(() => formatNumber(props.count));
 <template>
   <div :class="$style.userStatsCard">
     <slot name="icon">
-      <img :src="icon" :class="$style.icon" alt="Icon" />
+      <img v-if="icon" :src="icon" :class="$style.imgIcon" alt="Icon" />
     </slot>
     <p :class="$style.title">{{ title }}</p>
     <p :class="$style.count">{{ count || 0 }}</p>
@@ -43,9 +43,10 @@ const count = computed(() => formatNumber(props.count));
   flex-direction: column;
   gap: styles.$padding-sm-1;
   box-shadow: styles.$box-shadow;
+  border-radius: 4px;
 }
 
-.icon {
+.imgIcon {
   width: 24px;
   height: 24px;
 }

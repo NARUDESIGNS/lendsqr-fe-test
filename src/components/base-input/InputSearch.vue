@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import SearchIcon from "@/assets/icons/search-icon.svg";
+import SearchIcon from "@/assets/icons/search.svg";
 import InputText from "@/components/base-input/InputText.vue";
 import { ref } from "vue";
 
