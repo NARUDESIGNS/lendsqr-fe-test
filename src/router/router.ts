@@ -13,11 +13,13 @@ const route = createRouter({
       path: "/users",
       name: "users",
       component: () => import("@/pages/users/UsersPage.vue"),
-    },
-    {
-      path: "/users/:id",
-      name: "user",
-      component: () => import("@/pages/users/UserPage.vue"),
+      children: [
+        {
+          path: "/users/:id",
+          name: "user",
+          component: () => import("@/pages/users/UserDetailsPage.vue"),
+        },
+      ],
     },
     {
       path: "/:pathMatch(.*)*",

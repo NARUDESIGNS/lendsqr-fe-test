@@ -1,17 +1,15 @@
-import { EducationLevel } from "@/enums/EducationLevel";
-import { EmploymentSector } from "@/enums/EmploymentSector";
-import { EmploymentStatus } from "@/enums/EmploymentStatus";
-import { Relationship } from "@/enums/Relationship";
-import { ResidenceType } from "@/enums/ResidenceType";
-import { StatusType } from "@/enums/StatusType";
-import { TierRating } from "@/enums/TierRating";
+import type { EducationLevelType } from "@/enums/EducationLevelType";
+import type { EmploymentSectorType } from "@/enums/EmploymentSectorType";
+import type { EmploymentStatusType } from "@/enums/EmploymentStatusType";
+import type { MaritalStatusType } from "@/enums/MaritalStatusType";
+import type { RelationshipType } from "@/enums/RelationshipType";
+import type { ResidenceType } from "@/enums/ResidenceType";
+import type { StatusType } from "@/enums/StatusType";
 
 /**
  * Represents the personal information of a user.
  */
 export interface PersonalInfo {
-  /** Unique user ID */
-  id: string;
   /** Username */
   username: string;
   /** First name */
@@ -24,10 +22,10 @@ export interface PersonalInfo {
   email: string;
   /** BVN (Bank Verification Number) */
   bvn: number;
-  /** Gender (0 = Male, 1 = Female) */
+  /** Gender */
   gender: number;
-  /** Marital status (enum or number) */
-  maritalStatus: number;
+  /** Marital status */
+  maritalStatus: MaritalStatusType;
   /** Company name */
   company: string;
   /** Number of children */
@@ -36,8 +34,6 @@ export interface PersonalInfo {
   residenceType: ResidenceType;
   /** Account start date (ISO string) */
   startDate: string;
-  /** User status */
-  status: StatusType;
 }
 
 /**
@@ -45,22 +41,22 @@ export interface PersonalInfo {
  */
 export interface Career {
   /** Education level */
-  educationLevel: EducationLevel;
+  educationLevel: EducationLevelType;
   /** Employment status */
-  employmentStatus: EmploymentStatus;
+  employmentStatus: EmploymentStatusType;
   /** Employment sector */
-  employmentSector: EmploymentSector;
+  employmentSector: EmploymentSectorType;
   /** Duration of employment */
   employmentDuration: string;
   /** Company email */
   companyEmail: string;
   /** Monthly income range */
   monthlyIncomeRange: {
-    /** Currency code (e.g., NGN) */
+    /** Currency code */
     currency: string;
-    /** Lowest income (optional) */
+    /** Lowest income */
     lowest?: number;
-    /** Highest income (optional) */
+    /** Highest income */
     highest?: number;
   };
   /** Total loan paid amount */
@@ -84,15 +80,15 @@ export interface Socials {
  */
 export interface Guarantor {
   /** First name */
-  firstName?: string;
+  firstName: string;
   /** Last name */
-  lastName?: string;
+  lastName: string;
   /** Phone number */
-  number?: string;
+  number: string;
   /** Email address */
-  email?: string;
+  email: string;
   /** Relationship to user */
-  relationship: Relationship;
+  relationship: RelationshipType;
 }
 
 /**
@@ -104,13 +100,17 @@ export interface Account {
   /** Bank account number */
   bankAccount: string;
   /** Tier rating */
-  tierRating: TierRating;
+  tierRating: number;
 }
 
 /**
  * Represents the complete user data structure.
  */
 export interface UserDataType {
+  /** Unique user ID */
+  id: string;
+  /** User status */
+  status: StatusType;
   /** Personal information */
   personalInfo: PersonalInfo;
   /** Career information */
