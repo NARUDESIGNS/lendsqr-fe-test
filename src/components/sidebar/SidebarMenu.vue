@@ -195,7 +195,7 @@ const menuData = [
   display: flex;
   flex-direction: column;
   gap: $margin-lg;
-  border-top: 1px solid lighten(colors.use("border"), 60%);
+  border-top: 1px solid rgba(colors.use("border"), 0.1);
   .footerText {
     color: colors.use(text-dark);
     padding-left: $padding-lg;

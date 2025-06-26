@@ -43,7 +43,7 @@ defineProps<{
 
 .active {
   opacity: 1;
-  background-color: lighten(colors.use(primary), 45%);
+  background-color: rgba(colors.use(primary), 0.1);
   color: colors.use(text-dark);
   border-left: 3px solid colors.use(primary);
 }
@@ -51,8 +51,4 @@ defineProps<{
 .icon {
   display: flex;
 }
-
-// .title {
-//   display: none;
-// }
 </style>

@@ -4,6 +4,8 @@ import { computed } from "vue";
  * Returns the device size based on the provided width.
  * @param width - The width of the device in pixels.
  * @returns
+ * @example
+ * const device = useDeviceSize(768) //{ isMobile: false, isTablet: true, isDesktop: false}
  */
 export function useDeviceSize(width: number) {
   const data = computed(() => {
@@ -18,7 +20,3 @@ export function useDeviceSize(width: number) {
 
   return data.value;
 }
-
-// Usage:
-// const device = useDeviceSize(768);
-// device => { isMobile: false, isTablet: true, isDesktop: false

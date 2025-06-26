@@ -31,7 +31,11 @@ defineEmits<{
     <p :class="$style.data" :title="phone">{{ phone }}</p>
     <p :class="$style.data" :title="date">{{ date }}</p>
     <BaseTag :status="status" />
-    <span :class="$style.moreIcon" @click="$emit('showMore', $event)">
+    <span
+      tabindex="0"
+      :class="$style.moreIcon"
+      @click="$emit('showMore', $event)"
+    >
       <MoreVerticalIcon />
     </span>
   </div>
