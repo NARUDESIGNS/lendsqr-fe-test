@@ -37,6 +37,7 @@ It demonstrates best practices in:
 
 The application follows a modular structure with clearly separated concerns for components, composables, types, and styles.
 
+```text
 lendsqr-fe-test/
 ├── src/
 │ ├── api/ # API composables (e.g., useFetchApi.ts)
@@ -53,6 +54,7 @@ lendsqr-fe-test/
 ├── public/ # Static public files (index.html, favicon, etc.)
 ├── package.json
 └── README.md
+```
 
 ---
 
