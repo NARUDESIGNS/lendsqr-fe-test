@@ -9,7 +9,10 @@
  * ```
  */
 
-export function formatNumber(num: number, options?: { useShortForm: boolean }) {
+export function formatNumber(
+  num?: number,
+  options?: { useShortForm: boolean }
+) {
   if (num !== undefined && typeof num === "number") {
     return options?.useShortForm
       ? new Intl.NumberFormat("en", {
