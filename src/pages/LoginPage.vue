@@ -5,6 +5,12 @@ import BaseButton from "@/components/base-button/BaseButton.vue";
 import InputPassword from "@/components/base-input/InputPassword.vue";
 import InputText from "@/components/base-input/InputText.vue";
 import CenterPage from "@/components/CenterPage.vue";
+import { useRouter } from "vue-router";
+
+const router = useRouter();
+const navigateToUsers = () => {
+  router.push({ name: "users" });
+};
 </script>
 
 <template>
@@ -18,10 +24,7 @@ import CenterPage from "@/components/CenterPage.vue";
         <img :src="Logo" :class="$style.mobileLogo" alt="Logo" />
         <h1 :class="$style.title">Welcome!</h1>
         <p :class="$style.subtitle">Enter details to login.</p>
-        <form
-          :class="$style.form"
-          @submit.prevent="$router.push({ path: '/users' })"
-        >
+        <form :class="$style.form" @submit.prevent="navigateToUsers">
           <InputText placeholder="Email" type="email" required />
           <InputPassword placeholder="Password" required />
           <p :class="$style.footerText">
