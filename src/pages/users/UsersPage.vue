@@ -7,7 +7,7 @@ import NavBar from "@/components/NavBar.vue";
 import SidebarMenu from "@/components/sidebar/SidebarMenu.vue";
 import TableData from "@/components/table/TableData.vue";
 import UserStatsCard from "@/pages/users/UserStatsCard.vue";
-import { computed, useCssModule } from "vue";
+import { computed, ref, useCssModule } from "vue";
 import { useRoute } from "vue-router";
 
 const $style = useCssModule();
@@ -37,13 +37,23 @@ const route = useRoute();
 const isDetailsPage = computed(
   () => !!route.params.id && Number(route.params.id)
 );
+
+const isVisibleSideMenu = ref(false);
+const toggleMenu = () => {
+  isVisibleSideMenu.value = !isVisibleSideMenu.value;
+};
 </script>
 
 <template>
   <div :class="$style.overallWrap">
-    <NavBar />
+    <NavBar @toggleMenu="toggleMenu" />
     <div :class="$style.contentWrap">
-      <SidebarMenu :class="$style.sidebarMenu" />
+      <SidebarMenu
+        :class="[
+          $style.sidebarMenu,
+          { [$style.toggleMenu]: isVisibleSideMenu },
+        ]"
+      />
       <template v-if="isDetailsPage">
         <RouterView />
       </template>
@@ -72,6 +82,10 @@ const isDetailsPage = computed(
 <style module lang="scss">
 @use "@/scss/colors";
 @use "@/scss/styles" as *;
+
+.overallWrap {
+  position: relative;
+}
 
 .contentWrap {
   display: flex;
@@ -129,5 +143,25 @@ const isDetailsPage = computed(
 }
 .red {
   background-color: rgba(colors.use("red"), 0.1);
+}
+
+@media screen and (max-width: 1078px) {
+  .sidebarMenu {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    bottom: 0;
+    min-height: 100vh;
+  }
+  .toggleMenu {
+    display: flex;
+  }
+}
+
+@media screen and (max-width: 690px) {
+  .mainContent {
+    padding: $padding-lg;
+  }
 }
 </style>

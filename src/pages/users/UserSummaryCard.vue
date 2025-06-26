@@ -146,4 +146,28 @@ defineProps<{
     color: colors.use(primary);
   }
 }
+
+@media screen and (max-width: 910px) {
+  .summaryNav {
+    overflow-x: scroll !important;
+    width: 100% !important;
+    white-space: nowrap !important;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .userSummary {
+    .divider:last-of-type {
+      display: none !important;
+    }
+  }
+}
+
+@media screen and (max-width: 475px) {
+  .userSummary {
+    .divider:first-of-type {
+      display: none !important;
+    }
+  }
+}
 </style>

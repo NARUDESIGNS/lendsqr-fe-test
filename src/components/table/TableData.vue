@@ -239,7 +239,9 @@ const navigateToUserDetails = () => {
         <span :class="$style.tableHeaderTitle">Email</span>
         <span :class="$style.tableHeaderTitle">Phone Number</span>
         <span :class="$style.tableHeaderTitle">Date Joined</span>
-        <span :class="$style.tableHeaderTitle">Status</span>
+        <span :class="[$style.tableHeaderTitle, $style.statusHeader]">
+          Status
+        </span>
         <span :class="$style.tableHeaderTitle"></span>
       </div>
       <div :class="$style.tableRecordsWrap" ref="tableRecordWrap">
@@ -537,5 +539,27 @@ const navigateToUserDetails = () => {
   height: 35px;
   font-size: 0.75rem;
   padding: 0 $padding-lg;
+}
+
+@media screen and (max-width: 690px) {
+  .tableWrapper {
+    min-width: unset;
+  }
+  .tableHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .statusHeader {
+    margin-left: auto;
+    margin-right: 65px;
+  }
+  .tableHeaderTitle {
+    display: none !important;
+  }
+  .tableHeaderTitle:first-of-type,
+  .statusHeader {
+    display: flex !important;
+  }
 }
 </style>

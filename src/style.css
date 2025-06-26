@@ -21,11 +21,13 @@
 
 ::-webkit-scrollbar {
   width: 3px;
+  height: 3px;
   transition: 0.3s ease;
 }
 
 ::-webkit-scrollbar-track {
   width: 3px;
+  height: 3px;
   border-radius: 15px;
   background: transparent;
 }

@@ -63,4 +63,11 @@ type DataList = {
   text-overflow: ellipsis;
   overflow: hidden;
 }
+
+@media screen and (max-width: 910px) {
+  .dataListWrap {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
 </style>

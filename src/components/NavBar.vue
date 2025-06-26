@@ -6,6 +6,11 @@ import LogoIcon from "@/assets/vue-icons/LogoIcon.vue";
 import MenuIcon from "@/assets/vue-icons/MenuIcon.vue";
 import InputSearch from "@/components/base-input/InputSearch.vue";
 import { ref } from "vue";
+import { useRouter } from "vue-router";
+
+defineEmits<{
+  toggleMenu: [];
+}>();
 
 const navBarContent = ref<HTMLElement | null>(null);
 const isMenuVisible = ref(false);
@@ -15,6 +20,11 @@ const toggleMenu = () => {
     navBarContent.value.style.display = isMenuVisible.value ? "flex" : "none";
   }
 };
+
+const router = useRouter();
+const navigateToHome = () => {
+  router.push({ path: "/" });
+};
 </script>
 
 <template>
@@ -22,9 +32,9 @@ const toggleMenu = () => {
     <Component
       :class="$style.navBarLogo"
       :is="LogoIcon"
-      @click="$router.push({ path: '/' })"
+      @click="navigateToHome"
     />
-    <span :class="$style.menuIconWrap" @click="toggleMenu">
+    <span :class="$style.menuIconWrap" @click="toggleMenu, $emit('toggleMenu')">
       <Component :class="$style.menuIcon" :is="MenuIcon" alt="Menu Icon" />
     </span>
     <div :class="$style.navBarContent" ref="navBarContent">
@@ -53,7 +63,7 @@ const toggleMenu = () => {
 .navBar {
   position: sticky;
   top: 0;
-  z-index: 1;
+  z-index: 10;
 
   display: flex;
   align-items: center;
@@ -132,7 +142,7 @@ const toggleMenu = () => {
   }
 }
 
-@media screen and (max-width: 960px) {
+@media screen and (max-width: 1078px) {
   .menuIconWrap {
     display: flex;
     margin-left: auto;

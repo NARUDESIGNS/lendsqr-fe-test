@@ -309,4 +309,18 @@ const statusData = computed(() => {
     border-bottom: 1px solid rgba(colors.use(border), 0.1);
   }
 }
+
+@media screen and (max-width: 690px) {
+  .overallWrap {
+    padding: $padding-lg !important;
+  }
+  .header {
+    flex-direction: column;
+    align-items: start;
+    gap: $margin-md;
+  }
+  .headerActions {
+    width: 100%;
+  }
+}
 </style>

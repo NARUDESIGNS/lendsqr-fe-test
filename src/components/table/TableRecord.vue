@@ -30,7 +30,7 @@ defineEmits<{
     <p :class="$style.data" :title="email">{{ email }}</p>
     <p :class="$style.data" :title="phone">{{ phone }}</p>
     <p :class="$style.data" :title="date">{{ date }}</p>
-    <BaseTag :status="status" />
+    <BaseTag :status="status" :class="$style.tag" />
     <span
       tabindex="0"
       :class="$style.moreIcon"
@@ -66,6 +66,23 @@ defineEmits<{
   .moreIcon {
     padding: 0 $padding-sm;
     cursor: pointer;
+  }
+}
+
+@media screen and (max-width: 690px) {
+  .tableRecord {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .tag {
+    margin-left: auto;
+  }
+  .data {
+    display: none !important;
+  }
+  .data:first-of-type {
+    display: flex !important;
   }
 }
 </style>
