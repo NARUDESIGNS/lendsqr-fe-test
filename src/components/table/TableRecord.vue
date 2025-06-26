@@ -74,6 +74,7 @@ defineEmits<{
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: $margin-sm-1;
   }
   .tag {
     margin-left: auto;
@@ -81,7 +82,7 @@ defineEmits<{
   .data {
     display: none !important;
   }
-  .data:first-of-type {
+  .data:nth-child(2) {
     display: flex !important;
   }
 }

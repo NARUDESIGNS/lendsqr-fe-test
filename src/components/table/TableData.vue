@@ -32,9 +32,11 @@ const filters = ref({
 
 // For status dropdown
 const statusOptions = Object.values(StatusType).filter(
-  (v) => typeof v === "number"
+  (value) => typeof value === "number"
 ) as number[];
-const statusLabels = statusOptions.map((opt) => useEnumLabel(StatusType, opt));
+const statusLabels = statusOptions.map((option) =>
+  useEnumLabel(StatusType, option)
+);
 
 // Filtered users
 const filteredUsers = computed(() => {
@@ -286,7 +288,9 @@ const navigateToUserDetails = () => {
       >
         Prev
       </BaseButton>
-      <span>Page {{ currentPage }} of {{ totalPages }}</span>
+      <span :class="$style.pageCount"
+        >Page {{ currentPage }} of {{ totalPages }}</span
+      >
       <BaseButton
         :class="$style.paginationBtn"
         @click="currentPage++"
@@ -544,6 +548,7 @@ const navigateToUserDetails = () => {
 @media screen and (max-width: 690px) {
   .tableWrapper {
     min-width: unset;
+    padding: $padding-sm-1 $padding-md-1;
   }
   .tableHeader {
     display: flex;
@@ -557,9 +562,20 @@ const navigateToUserDetails = () => {
   .tableHeaderTitle {
     display: none !important;
   }
-  .tableHeaderTitle:first-of-type,
+  .tableHeaderTitle:nth-child(2),
   .statusHeader {
     display: flex !important;
+  }
+
+  .pagination {
+    .pageCount {
+      width: 100%;
+      font-size: 0.75rem;
+    }
+    .paginationBtn {
+      height: unset;
+      padding: $padding-md $padding-lg;
+    }
   }
 }
 </style>
