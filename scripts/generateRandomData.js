@@ -1,5 +1,5 @@
-import { faker } from '@faker-js/faker';
-import fs from 'fs';
+import { faker } from "@faker-js/faker";
+import fs from "fs";
 
 // Generate random user data using Faker.js
 // const residenceTypes = [0, 1, 2, 3]; // Apartment, Detached House, Townhouse, Bungalow
@@ -25,17 +25,23 @@ const users = Array.from({ length: 500 }, (_, i) => {
   const maritalStatus = faker.number.int({ min: 0, max: 3 });
   const childCount = randomInt(0, 5);
   const residenceType = faker.number.int({ min: 0, max: 3 });
-  const startDate = faker.date.between({ from: '2020-01-01', to: '2025-06-01' }).toISOString();
+  const startDate = faker.date
+    .between({ from: "2020-01-01", to: "2025-06-01" })
+    .toISOString();
   const status = faker.number.int({ min: 0, max: 3 });
 
   const educationLevel = faker.number.int({ min: 0, max: 3 });
   const employmentStatus = faker.number.int({ min: 0, max: 2 });
   const employmentSector = faker.number.int({ min: 0, max: 2 });
   const employmentDuration = `${randomInt(1, 10)} year(s)`;
-  const companyEmail = faker.internet.email({ firstName, lastName, provider: company.replace(/\s/g, '').toLowerCase() + '.com' });
-  const lowestIncome = randomInt(1000, 5000);
-  const highestIncome = lowestIncome + randomInt(1000, 5000);
-  const loanPaidAmount = randomInt(0, 10000);
+  const companyEmail = faker.internet.email({
+    firstName,
+    lastName,
+    provider: company.replace(/\s/g, "").toLowerCase() + ".com",
+  });
+  const lowestIncome = randomInt(100000, 500000);
+  const highestIncome = lowestIncome + randomInt(10000, 100000);
+  const loanPaidAmount = randomInt(10000, 200000);
 
   const twitter = `@${username.toLowerCase()}`;
   const facebook = `facebook.com/${username.toLowerCase()}`;
@@ -43,23 +49,30 @@ const users = Array.from({ length: 500 }, (_, i) => {
 
   const guarantorFirstName = faker.person.firstName();
   const guarantorLastName = faker.person.lastName();
-  const guarantorEmail = faker.internet.email({ firstName: guarantorFirstName, lastName: guarantorLastName });
+  const guarantorEmail = faker.internet.email({
+    firstName: guarantorFirstName,
+    lastName: guarantorLastName,
+  });
   const relationship = faker.number.int({ min: 0, max: 3 });
 
-  const bankName = faker.company.name() + ' Bank';
+  const bankName = faker.company.name() + " Bank";
   const bankAccount = faker.finance.accountNumber({ length: 10 });
   const tierRating = faker.number.int({ min: 0, max: 3 });
 
   function generateCustomPhone() {
-    const second = faker.helpers.arrayElement(['8', '9']);
-    const third = faker.helpers.arrayElement(['0', '1']);
-    const rest = faker.number.int({ min: 10000000, max: 99999999 }).toString().padStart(8, '0');
+    const second = faker.helpers.arrayElement(["8", "9"]);
+    const third = faker.helpers.arrayElement(["0", "1"]);
+    const rest = faker.number
+      .int({ min: 10000000, max: 99999999 })
+      .toString()
+      .padStart(8, "0");
     return `0${second}${third}${rest}`;
   }
 
   return {
+    id: (i + 1).toString(),
+    status: status,
     personalInfo: {
-      id: (i + 1).toString(),
       username: username,
       firstName,
       lastName,
@@ -72,7 +85,6 @@ const users = Array.from({ length: 500 }, (_, i) => {
       childCount: childCount,
       residenceType: residenceType,
       startDate: startDate,
-      status: status
     },
     career: {
       educationLevel: educationLevel,
@@ -83,29 +95,29 @@ const users = Array.from({ length: 500 }, (_, i) => {
       monthlyIncomeRange: {
         lowest: lowestIncome,
         highest: highestIncome,
-        currency: "NGN"
+        currency: "NGN",
       },
-      loanPaidAmount: loanPaidAmount
+      loanPaidAmount: loanPaidAmount,
     },
     socials: {
       twitter: twitter,
       facebook: facebook,
-      instagram: instagram
+      instagram: instagram,
     },
     guarantor: {
       firstName: guarantorFirstName,
       lastName: guarantorLastName,
       number: generateCustomPhone(),
       email: guarantorEmail,
-      relationship: relationship
+      relationship: relationship,
     },
     account: {
       bankName: bankName,
       bankAccount: bankAccount,
-      tierRating: tierRating
-    }
+      tierRating: tierRating,
+    },
   };
 });
 
-fs.writeFileSync('users.json', JSON.stringify(users, null, 2));
-console.log('Generated users.json with 500 users!');
+fs.writeFileSync("scripts/users.json", JSON.stringify(users, null, 2));
+console.log("Generated users.json with 500 users!");
