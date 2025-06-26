@@ -21,7 +21,6 @@ test("Short Number Format", () => {
   expect(formatNumber(0, { useShortForm: true })).toBe("0");
   expect(formatNumber(123)).toBe("123");
   expect(formatNumber(-1)).toBe("-1");
-  // @ts-expect-error
   expect(formatNumber()).toBeUndefined();
 });
 
