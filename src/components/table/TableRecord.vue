@@ -34,7 +34,7 @@ defineEmits<{
     <span
       tabindex="0"
       :class="$style.moreIcon"
-      @click="$emit('showMore', $event)"
+      @click="$emit('show-more', $event)"
     >
       <MoreVerticalIcon />
     </span>

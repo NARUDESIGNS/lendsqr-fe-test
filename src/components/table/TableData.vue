@@ -259,7 +259,7 @@ const navigateToUserDetails = () => {
           :status="user.status"
           :status-label="user.personalInfo?.statusLabel"
           ref="tableRecordRef"
-          @showMore="(event) => handleShowMore(event, user?.id)"
+          @show-more="(event) => handleShowMore(event, user?.id)"
         />
         <div v-if="isModalOpen" :class="$style.modal" ref="modalRef">
           <ul :class="$style.modalListWrap">
