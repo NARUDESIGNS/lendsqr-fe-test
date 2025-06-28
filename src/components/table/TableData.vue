@@ -52,12 +52,12 @@ const filteredUsers = computed(() => {
     const status = useEnumLabel(StatusType, user.status) || "";
 
     return (
-      org.toLowerCase().includes(filters.value.organization.toLowerCase()) &&
-      username.toLowerCase().includes(filters.value.username.toLowerCase()) &&
-      email.toLowerCase().includes(filters.value.email.toLowerCase()) &&
-      phone.toLowerCase().includes(filters.value.phone.toLowerCase()) &&
+      org.toLowerCase().startsWith(filters.value.organization.toLowerCase()) &&
+      username.toLowerCase().startsWith(filters.value.username.toLowerCase()) &&
+      email.toLowerCase().startsWith(filters.value.email.toLowerCase()) &&
+      phone.toLowerCase().startsWith(filters.value.phone.toLowerCase()) &&
       (!filterDate || userDate === filterDate) &&
-      status.toLowerCase().includes(filters.value.status.toLowerCase())
+      status.toLowerCase().startsWith(filters.value.status.toLowerCase())
     );
   });
 });
