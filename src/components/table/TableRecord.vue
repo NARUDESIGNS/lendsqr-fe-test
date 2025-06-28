@@ -19,7 +19,7 @@ defineProps<{
 }>();
 
 defineEmits<{
-  showMore: [event: MouseEvent];
+  "show-more": [event: MouseEvent];
 }>();
 </script>
 

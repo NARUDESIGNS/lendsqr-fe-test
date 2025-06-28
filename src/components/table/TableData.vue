@@ -357,8 +357,8 @@ const navigateToUserDetails = () => {
 
 .modal {
   position: absolute;
-  top: v-bind("`${modalPosition.top}px`");
-  right: 0;
+  top: v-bind("`${modalPosition.top + 50}px`");
+  right: 40px;
   z-index: 1;
   background: colors.use(bg-primary);
   border-radius: 4px;

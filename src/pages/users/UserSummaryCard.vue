@@ -1,7 +1,10 @@
 <script setup lang="ts">
+import StarEmptyIcon from "@/assets/vue-icons/StarEmptyIcon.vue";
+import StarFilledIcon from "@/assets/vue-icons/StarFilledIcon.vue";
 import UserOutlineIcon from "@/assets/vue-icons/UserOutlineIcon.vue";
+import { computed } from "vue";
 
-defineProps<{
+const props = defineProps<{
   /** id */
   id: string;
   /** Full Name */
@@ -15,6 +18,8 @@ defineProps<{
   /**  Account Name */
   accountName: string;
 }>();
+
+const rateCount = computed(() => props.userRating);
 </script>
 
 <template>
@@ -32,7 +37,8 @@ defineProps<{
       <hr :class="$style.divider" />
       <div :class="$style.tierRating">
         <p>User's Tier</p>
-        <span>* * *</span>
+        <StarFilledIcon v-for="index of rateCount" :key="index" />
+        <StarEmptyIcon v-for="index of 3 - rateCount" :key="index" />
       </div>
       <hr :class="$style.divider" />
       <div :class="$style.accountDetails">
